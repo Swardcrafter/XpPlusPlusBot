@@ -12,9 +12,7 @@ client = commands.Bot(command_prefix = secrets["COMMAND_PREFIX"])
 
 for f in os.listdir("./commands"):
 	if f.endswith(".py"):
-		client.load_extension("cogs." + f[:-3])
-
-print("Testing")
+		client.load_extension("cogs." + f[:-3])\
 
 client.run(secrets["TOKEN"])
 
