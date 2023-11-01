@@ -1,16 +1,11 @@
 import discord
 from discord.ext import commands
 import os
-import json
-
-# Import Data
-with open('secrets.json', 'r') as json_file:
-    secrets = json.load(json_file)
 
 class Client(commands.Bot):
     def __init__(self):
         super().__init__(
-            command_prefix = secrets["COMMAND_PREFIX"],
+            command_prefix = os.environ['COMMAND_PREFIX'],
             intents = discord.Intents.all(),
             help_command = commands.DefaultHelpCommand(dm_help=True)
         )
@@ -30,4 +25,4 @@ client = Client()
 async def on_ready():
     print("Bot is ready")
 
-client.run(secrets["TOKEN"])
+client.run(os.environ['TOKEN'])
