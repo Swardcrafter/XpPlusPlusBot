@@ -1,0 +1,4 @@
+{
+	"TOKEN": "MTE2OTA5Njc4MzEwOTAzODExMA.G_sjRv.O730PJdRLFgeoiSmbqIQgEjmz_5wjzkOW7Vuys",
+	"COMMAND_PREFIX": "!"
+}
