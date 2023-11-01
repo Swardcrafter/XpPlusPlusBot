@@ -14,4 +14,8 @@ for f in os.listdir("./commands"):
 	if f.endswith(".py"):
 		client.load_extension("cogs." + f[:-3])
 
+print("Testing")
+
 client.run(secrets["TOKEN"])
+
+print("Running")
