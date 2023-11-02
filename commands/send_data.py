@@ -8,7 +8,7 @@ class SendData(commands.Cog):
 		self.client = client
     
 	@commands.hybrid_command()
-	async def send_data(self, ctx, data: dict):
+	async def send_data(self, ctx, data: str):
 		response = requests.post(os.environ['FLASK_URL'], json=json.dumps(data))
 
 		if response.status_code == 200:
