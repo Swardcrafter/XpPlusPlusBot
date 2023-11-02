@@ -14,8 +14,11 @@ class SendData(commands.Cog):
 		except json.JSONDecodeError:
 			await ctx.send("Data is not dict type.")
 			return
+		except Exception as e:
+			# Handle other exceptions here
+			await ctx.send(f"An error occurred: {str(e)}")
+			return
 		
-		await ctx.send(f"Sent: {data_dict}")
 		response = requests.post(os.environ['FLASK_URL'], json=data_dict)
 
 		if response.status_code == 200:
