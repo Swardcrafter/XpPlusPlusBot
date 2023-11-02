@@ -1,14 +1,15 @@
 from discord.ext import commands
 import requests
 import os
+import json
 
 class SendData(commands.Cog):
 	def __init__(self, client):
 		self.client = client
     
 	@commands.hybrid_command()
-	async def send_data(self, ctx, data: str):
-		response = requests.post(os.environ['FLASK_URL'], json=data)
+	async def send_data(self, ctx, data: dict):
+		response = requests.post(os.environ['FLASK_URL'], json=json.dumps(data))
 
 		if response.status_code == 200:
 			await ctx.send("Message sent successfully")
