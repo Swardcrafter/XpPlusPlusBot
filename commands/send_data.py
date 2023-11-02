@@ -9,7 +9,14 @@ class SendData(commands.Cog):
     
 	@commands.hybrid_command()
 	async def send_data(self, ctx, data: str):
-		response = requests.post(os.environ['FLASK_URL'], json=json.dumps(data))
+		try:
+			data_dict = json.loads(data)
+		except json.JSONDecodeError:
+			await ctx.send("Data is not dict type.")
+			return
+		
+		await ctx.send(f"Sent: {data_dict}")
+		response = requests.post(os.environ['FLASK_URL'], json=data_dict)
 
 		if response.status_code == 200:
 			await ctx.send("Message sent successfully")
